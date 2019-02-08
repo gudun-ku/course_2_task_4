@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/add_txt_item"
+        android:title="@string/lbl_mnu_txt_item"
+        android:icon="@drawable/ic_add_txt_info"
+        app:showAsAction="always"
+        />
+    <item android:id="@+id/add_img_item"
+        android:title="@string/lbl_mnu_img_item"
+        android:icon="@drawable/ic_add_img_info"
+        app:showAsAction="always"
+        />
+</menu>

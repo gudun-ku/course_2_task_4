@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">HeterogenousRecyclerView</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Heterogenous RW</string>
+    <string name="lbl_mnu_txt_item">Add text</string>
+    <string name="lbl_mnu_img_item">Add image</string>
 </resources>

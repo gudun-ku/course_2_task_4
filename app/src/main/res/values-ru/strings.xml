@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Комплексный RW</string>
+    <string name="lbl_mnu_txt_item">Добавить текст</string>
+    <string name="lbl_mnu_img_item">Добавить картинку</string>
+</resources>
