@@ -4,13 +4,13 @@ public class MockTextInfo {
 
     private String mName;
     private String mDescription;
-    private int mValue;
+    private int mId;
 
 
-    public MockTextInfo(String name, String description, int value) {
+    public MockTextInfo(String name, String description, int id) {
         mName = name;
         mDescription = description;
-        mValue = value;
+        mId = id;
     }
 
     public String getName() {
@@ -22,11 +22,15 @@ public class MockTextInfo {
     }
 
     public String getValue() {
-        return String.valueOf(mValue);
+        return String.valueOf(mId);
     }
 
-    public void setValue(int value) {
-        mValue = value;
+    public void setId(int id) {
+        mId = id;
+    }
+
+    public int getId() {
+        return mId;
     }
 
     public String getDescription() {
