@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="names">
+        <item>name_0</item>
+        <item>name_1</item>
+        <item>name_2</item>
+        <item>name_3</item>
+        <item>name_4</item>
+        <item>name_5</item>
+        <item>name_6</item>
+        <item>name_7</item>
+        <item>name_8</item>
+        <item>name_9</item>
+    </array>
+
+    <array name="descriptions">
+        <item>description_0</item>
+        <item>description_1</item>
+        <item>description_2</item>
+        <item>description_3</item>
+        <item>description_4</item>
+        <item>description_5</item>
+        <item>description_6</item>
+        <item>description_7</item>
+        <item>description_8</item>
+        <item>description_9</item>
+    </array>
+
+    <array name="labels">
+        <item>picture_label_0</item>
+        <item>picture_label_1</item>
+        <item>picture_label_2</item>
+        <item>picture_label_3</item>
+        <item>picture_label_4</item>
+        <item>picture_label_5</item>
+        <item>picture_label_6</item>
+        <item>picture_label_7</item>
+        <item>picture_label_8</item>
+        <item>picture_label_9</item>
+    </array>
+
+</resources>

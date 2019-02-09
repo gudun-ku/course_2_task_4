@@ -93,6 +93,10 @@ public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             vh.setId(itemInfo.getId());
             ImageView v = vh.getImageViewPicture();
             v.setImageResource(R.drawable.ic_no_image);
+            // work with picasso
+            Picasso.with(v.getContext())
+                    .load(itemInfo.getPictureUrl())
+                    .into(v);
         }
     }
 
