@@ -11,15 +11,15 @@ public class MockData  {
         return  mList;
     }
 
-    public interface ItemAddedListener {
+    public interface MockDataListener {
         void itemAdded(int position);
         void itemRemoved(int position);
     }
 
-    private ItemAddedListener mItemAddedlistener;
+    private MockDataListener mMockDataListener;
 
-    public void setListener(ItemAddedListener listener){
-        mItemAddedlistener = listener;
+    public void setMockDataListener(MockDataListener listener){
+        mMockDataListener = listener;
     }
 
     public void addData(List<Object> items) {
@@ -29,15 +29,15 @@ public class MockData  {
     public void addItem(Object item) {
         int position = mList.size();
         mList.add(item);
-        if (mItemAddedlistener != null) {
-            mItemAddedlistener.itemAdded(position);
+        if (mMockDataListener != null) {
+            mMockDataListener.itemAdded(position);
         }
     }
 
     public void removeItem(int position) {
         mList.remove(position);
-        if (mItemAddedlistener != null) {
-            mItemAddedlistener.itemRemoved(position);
+        if (mMockDataListener != null) {
+            mMockDataListener.itemRemoved(position);
         }
     }
     //Singleton methods

@@ -20,7 +20,9 @@ import com.beloushkin.learning.android.heterogenousrecyclerview.mock.MockGenerat
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ListFragment extends Fragment {
+public class ListFragment extends Fragment
+        implements MockData.MockDataListener
+{
 
     private RecyclerView mRecyclerView;
     private final MockData mMockData = MockData.getInstance();
@@ -36,19 +38,19 @@ public class ListFragment extends Fragment {
 
     // создадим листенер и будем инициализировать в onAttach
     // если бы листенеров было несколько то пришлось бы пихать в ArrayList
-    private MockAdapter.onItemClickListener mListener;
+    private MockAdapter.onItemClickListener mOnclickListener;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof MockAdapter.onItemClickListener) {
-            mListener = (MockAdapter.onItemClickListener) context;
+            mOnclickListener = (MockAdapter.onItemClickListener) context;
         }
     }
 
     @Override
     public void onDetach() {
-        mListener = null;
+        mOnclickListener = null;
         super.onDetach();
     }
 
@@ -64,9 +66,9 @@ public class ListFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mAdapter);
         //Setting add data listener here because only here we have adapter
-        mMockData.setListener(mAdapter);
+        mMockData.setMockDataListener(this);
         //Setting onClick listener here
-        mAdapter.setOnClickListener(mListener);
+        mAdapter.setOnClickListener(mOnclickListener);
     }
 
     @Override
@@ -76,6 +78,16 @@ public class ListFragment extends Fragment {
         return inflater.inflate(R.layout.fr_list, container, false);
     }
 
+    // MockDataListener implementation
+     @Override
+    public void itemAdded(int position) {
+        mAdapter.notifyItemInserted(position);
+        mRecyclerView.scrollToPosition(position);
+    }
+
+    public void itemRemoved(int position) {
+        mAdapter.notifyDataSetChanged();
+    }
 
 
 }

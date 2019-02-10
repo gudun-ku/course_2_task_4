@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
-                         implements MockData.ItemAddedListener
+
 {
 
     private List<Object> mItems;
@@ -113,15 +113,6 @@ public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public int getItemCount() {
         return mItems.size();
-    }
-
-    @Override
-    public void itemAdded(int position) {
-        notifyDataSetChanged();
-    }
-
-    public void itemRemoved(int position) {
-        notifyDataSetChanged();
     }
 
 
