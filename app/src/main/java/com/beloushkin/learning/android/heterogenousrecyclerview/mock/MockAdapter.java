@@ -1,10 +1,7 @@
 package com.beloushkin.learning.android.heterogenousrecyclerview.mock;
 
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +9,6 @@ import android.widget.ImageView;
 
 import com.beloushkin.learning.android.heterogenousrecyclerview.R;
 import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
@@ -25,11 +19,19 @@ public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private final int ITEM_TEXT = 0;
     private final int ITEM_IMAGE = 1;
 
+    private MockAdapter.onItemClickListener mOnClickListener;
+
+    public void setOnClickListener(onItemClickListener listener) {
+        mOnClickListener = listener;
+    }
+
+    public interface onItemClickListener {
+        void onItemClick(int id);
+    }
+
     public MockAdapter(List<Object> items){
         mItems = items;
     }
-
-
 
     @Override
     public int getItemViewType(int position) {
@@ -70,10 +72,12 @@ public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             case ITEM_TEXT:
                 MockHolderText vhTxt = (MockHolderText) viewHolder;
                 configureTextViewHolder(vhTxt, position);
+                vhTxt.setOnClickListener(mOnClickListener);
                 break;
             case ITEM_IMAGE:
                 MockHolderImage vhImg = (MockHolderImage) viewHolder;
                 configureImageViewHolder(vhImg, position);
+                vhImg.setOnClickListener(mOnClickListener);
                 break;
             default:
                 break;
@@ -86,7 +90,8 @@ public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             vh.getTexViewName().setText("Name: " + itemInfo.getName());
             vh.getTextViewDescription().setText("Description: " + itemInfo.getDescription());
             vh.getTextViewValue().setText(itemInfo.getValue());
-            vh.setId(itemInfo.getId());
+            //here we set position!
+            vh.setId(position);
         }
     }
 
@@ -94,7 +99,8 @@ public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         MockPictureInfo itemInfo = (MockPictureInfo) mItems.get(position);
         if (itemInfo != null) {
             vh.getTextViewLabel().setText(itemInfo.getLabel());
-            vh.setId(itemInfo.getId());
+            //here we set position!
+            vh.setId(position);
             ImageView v = vh.getImageViewPicture();
             v.setImageResource(R.drawable.ic_no_image);
             // work with picasso
@@ -113,4 +119,10 @@ public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void itemAdded(int position) {
         notifyDataSetChanged();
     }
+
+    public void itemRemoved(int position) {
+        notifyDataSetChanged();
+    }
+
+
 }

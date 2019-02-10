@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.beloushkin.learning.android.heterogenousrecyclerview.R;
 
-public class MockHolderText extends RecyclerView.ViewHolder {
+public class MockHolderText extends MockHolder {
 
     private TextView tvName;
     private TextView tvDescription;
@@ -34,24 +34,5 @@ public class MockHolderText extends RecyclerView.ViewHolder {
     public TextView getTextViewValue() {
         return tvValue;
     }
-
-    public int getId() {
-        return mId;
-    }
-
-    public void setId(int id) {
-        mId = id;
-    }
-    /*
-    public void setListener(final MockAdapter.onItemClickListener listener) {
-        //обращаемся ко всему элементу списка
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onItemClick(mId);
-            }
-        });
-    }
-    */
 
 }

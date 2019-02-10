@@ -33,7 +33,7 @@ public class MockGenerator {
     }
 
     public MockPictureInfo generatePictureInfo() {
-        int id = random.nextInt(2000);
+        int id = random.nextInt(1000);
         int shardId = id % 10;
         String label = "no_label";
         String description = "no_description";

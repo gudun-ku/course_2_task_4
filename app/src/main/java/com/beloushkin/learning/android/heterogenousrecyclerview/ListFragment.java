@@ -1,6 +1,7 @@
 package com.beloushkin.learning.android.heterogenousrecyclerview;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -33,6 +34,24 @@ public class ListFragment extends Fragment {
         return new ListFragment();
     }
 
+    // создадим листенер и будем инициализировать в onAttach
+    // если бы листенеров было несколько то пришлось бы пихать в ArrayList
+    private MockAdapter.onItemClickListener mListener;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof MockAdapter.onItemClickListener) {
+            mListener = (MockAdapter.onItemClickListener) context;
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        mListener = null;
+        super.onDetach();
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -46,6 +65,8 @@ public class ListFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
         //Setting add data listener here because only here we have adapter
         mMockData.setListener(mAdapter);
+        //Setting onClick listener here
+        mAdapter.setOnClickListener(mListener);
     }
 
     @Override

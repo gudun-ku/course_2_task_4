@@ -13,6 +13,7 @@ public class MockData  {
 
     public interface ItemAddedListener {
         void itemAdded(int position);
+        void itemRemoved(int position);
     }
 
     private ItemAddedListener mItemAddedlistener;
@@ -33,6 +34,12 @@ public class MockData  {
         }
     }
 
+    public void removeItem(int position) {
+        mList.remove(position);
+        if (mItemAddedlistener != null) {
+            mItemAddedlistener.itemRemoved(position);
+        }
+    }
     //Singleton methods
     private static MockData mInstance;
 

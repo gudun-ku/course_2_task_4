@@ -6,10 +6,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.beloushkin.learning.android.heterogenousrecyclerview.mock.MockAdapter;
 import com.beloushkin.learning.android.heterogenousrecyclerview.mock.MockData;
 import com.beloushkin.learning.android.heterogenousrecyclerview.mock.MockGenerator;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+implements MockAdapter.onItemClickListener
+{
 
     private Toast mToast;
     private final MockData mMockData = MockData.getInstance();
@@ -58,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
 
+    @Override
+    public void onItemClick(int id) {
+        mMockData.removeItem(id);
     }
 }
