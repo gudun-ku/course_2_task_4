@@ -17,7 +17,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
+                         implements MockData.ItemAddedListener
+{
 
     private List<Object> mItems;
     private final int ITEM_TEXT = 0;
@@ -26,6 +28,8 @@ public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public MockAdapter(List<Object> items){
         mItems = items;
     }
+
+
 
     @Override
     public int getItemViewType(int position) {
@@ -100,20 +104,13 @@ public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-
-
     @Override
     public int getItemCount() {
         return mItems.size();
     }
 
-    public void addData(List<Object> items) {
-        mItems.addAll(items);
+    @Override
+    public void itemAdded(int position) {
         notifyDataSetChanged();
     }
-    public void addItem(Object item) {
-        mItems.add(item);
-        notifyDataSetChanged();
-    }
-
 }

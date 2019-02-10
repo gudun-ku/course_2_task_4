@@ -6,9 +6,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.beloushkin.learning.android.heterogenousrecyclerview.mock.MockData;
+import com.beloushkin.learning.android.heterogenousrecyclerview.mock.MockGenerator;
+
 public class MainActivity extends AppCompatActivity {
 
     private Toast mToast;
+    private final MockData mMockData = MockData.getInstance();
+    private final MockGenerator mockGenerator = new MockGenerator(this);
+
 
     private void showToast(String msg) {
         if (mToast != null) {
@@ -29,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, ListFragment.newInstance())
                     .commit();
         }
+
     }
 
     @Override
@@ -42,12 +49,15 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.add_txt_item:
                 showToast(item.getTitle().toString());
+                mMockData.addItem(mockGenerator.generateTextInfo());
                 return true;
             case R.id.add_img_item:
                 showToast(item.getTitle().toString());
+                mMockData.addItem(mockGenerator.generatePictureInfo());
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+
     }
 }

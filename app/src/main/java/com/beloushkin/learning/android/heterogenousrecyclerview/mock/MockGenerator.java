@@ -26,7 +26,7 @@ public class MockGenerator {
         Context context = contextWR.get();
         if (context != null) {
             name = context.getResources().getStringArray(R.array.names)[shardId];
-            name = context.getResources().getStringArray(R.array.descriptions)[shardId];
+            description = context.getResources().getStringArray(R.array.descriptions)[shardId];
         }
 
         return new MockTextInfo(name,description,id);
@@ -42,6 +42,6 @@ public class MockGenerator {
         if (context != null) {
             label = context.getResources().getStringArray(R.array.labels)[shardId];
         }
-        return new MockPictureInfo(label, "file:///android_asset/images/image_" + String.valueOf(shardId) + ".png");
+        return new MockPictureInfo(label, "file:///android_asset/image_" + String.valueOf(shardId) + ".png");
     }
 }

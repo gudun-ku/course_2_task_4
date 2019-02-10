@@ -25,8 +25,6 @@ public class ListFragment extends Fragment {
     private final MockData mMockData = MockData.getInstance();
     private final MockAdapter mAdapter = new MockAdapter(mMockData.mockList());
 
-    private MockGenerator mMockGenerator;
-
     public ListFragment() {
         // Required empty public constructor
     }
@@ -46,10 +44,8 @@ public class ListFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mAdapter);
-
-        mMockGenerator = new MockGenerator(getActivity());
-        mAdapter.addItem(mMockGenerator.generateTextInfo());
-        mAdapter.addItem(mMockGenerator.generatePictureInfo());
+        //Setting add data listener here because only here we have adapter
+        mMockData.setListener(mAdapter);
     }
 
     @Override

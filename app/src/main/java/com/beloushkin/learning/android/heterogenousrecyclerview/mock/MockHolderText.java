@@ -19,7 +19,7 @@ public class MockHolderText extends RecyclerView.ViewHolder {
         super(itemView);
 
         tvName = itemView.findViewById(R.id.tv_name);
-        tvDescription = itemView.findViewById(R.id.tv_name);
+        tvDescription = itemView.findViewById(R.id.tv_description);
         tvValue = itemView.findViewById(R.id.tv_value);
     }
 
