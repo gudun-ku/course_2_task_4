@@ -42,6 +42,6 @@ public class MockGenerator {
         if (context != null) {
             label = context.getResources().getStringArray(R.array.labels)[shardId];
         }
-        return new MockPictureInfo(label, "file:///android_asset/image_" + String.valueOf(shardId) + ".png");
+        return new MockPictureInfo(label, "file:///android_asset/images/image_" + String.valueOf(shardId) + ".png");
     }
 }
