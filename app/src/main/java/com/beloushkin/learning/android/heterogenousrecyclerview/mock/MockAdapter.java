@@ -101,8 +101,19 @@ public class MockAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
 
+
     @Override
     public int getItemCount() {
         return mItems.size();
     }
+
+    public void addData(List<Object> items) {
+        mItems.addAll(items);
+        notifyDataSetChanged();
+    }
+    public void addItem(Object item) {
+        mItems.add(item);
+        notifyDataSetChanged();
+    }
+
 }

@@ -10,14 +10,14 @@ import java.util.Random;
 
 public class MockGenerator {
 
-    private static Random random = new Random();
-    private static WeakReference<Context> contextWR;
+    private Random random = new Random();
+    private WeakReference<Context> contextWR;
 
     public MockGenerator(Context context) {
        contextWR = new WeakReference<>(context);
     }
 
-    public static MockTextInfo generateTextInfo() {
+    public  MockTextInfo generateTextInfo() {
         int id = random.nextInt(1000);
         int shardId = id % 10;
         String name = "no_name";
@@ -32,7 +32,7 @@ public class MockGenerator {
         return new MockTextInfo(name,description,id);
     }
 
-    public static MockPictureInfo generatePictureInfo() {
+    public MockPictureInfo generatePictureInfo() {
         int id = random.nextInt(2000);
         int shardId = id % 10;
         String label = "no_label";

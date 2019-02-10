@@ -7,7 +7,7 @@ public class MockData {
 
     private ArrayList<Object> mList = new ArrayList<>();
 
-    List<Object> mockList() {
+    public List<Object> mockList() {
         return  mList;
     }
 
